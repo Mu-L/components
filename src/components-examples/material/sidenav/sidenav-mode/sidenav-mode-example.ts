@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {FormControl} from '@angular/forms';
+import {MatDrawerMode} from '@angular/material/sidenav';
 
 /** @title Sidenav with configurable mode */
 @Component({
@@ -8,6 +9,6 @@ import {FormControl} from '@angular/forms';
   styleUrls: ['sidenav-mode-example.css'],
 })
 export class SidenavModeExample {
-  mode = new FormControl('over');
-  shouldRun = [/(^|\.)plnkr\.co$/, /(^|\.)stackblitz\.io$/].some(h => h.test(window.location.host));
+  mode = new FormControl('over' as MatDrawerMode);
+  shouldRun = /(^|.)(stackblitz|webcontainer).(io|com)$/.test(window.location.host);
 }

@@ -30,26 +30,20 @@ export class MatBadge extends _MatBadgeBase implements OnInit, OnDestroy, CanDis
     set description(newDescription: string);
     getBadgeElement(): HTMLElement | undefined;
     get hidden(): boolean;
-    set hidden(val: boolean);
+    set hidden(val: BooleanInput);
     _id: number;
     isAbove(): boolean;
     isAfter(): boolean;
-    // (undocumented)
-    static ngAcceptInputType_disabled: BooleanInput;
-    // (undocumented)
-    static ngAcceptInputType_hidden: BooleanInput;
-    // (undocumented)
-    static ngAcceptInputType_overlap: BooleanInput;
     // (undocumented)
     ngOnDestroy(): void;
     // (undocumented)
     ngOnInit(): void;
     get overlap(): boolean;
-    set overlap(val: boolean);
+    set overlap(val: BooleanInput);
     position: MatBadgePosition;
     size: MatBadgeSize;
     // (undocumented)
-    static ɵdir: i0.ɵɵDirectiveDeclaration<MatBadge, "[matBadge]", never, { "disabled": "matBadgeDisabled"; "color": "matBadgeColor"; "overlap": "matBadgeOverlap"; "position": "matBadgePosition"; "content": "matBadge"; "description": "matBadgeDescription"; "size": "matBadgeSize"; "hidden": "matBadgeHidden"; }, {}, never>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<MatBadge, "[matBadge]", never, { "disabled": "matBadgeDisabled"; "color": "matBadgeColor"; "overlap": "matBadgeOverlap"; "position": "matBadgePosition"; "content": "matBadge"; "description": "matBadgeDescription"; "size": "matBadgeSize"; "hidden": "matBadgeHidden"; }, {}, never, never, false>;
     // (undocumented)
     static ɵfac: i0.ɵɵFactoryDeclaration<MatBadge, [null, null, null, null, { optional: true; }]>;
 }

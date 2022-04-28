@@ -24,14 +24,14 @@ export class BidiModule {
 export class Dir implements Directionality, AfterContentInit, OnDestroy {
     readonly change: EventEmitter<Direction>;
     get dir(): Direction;
-    set dir(value: Direction);
+    set dir(value: Direction | 'auto');
     ngAfterContentInit(): void;
     // (undocumented)
     ngOnDestroy(): void;
     _rawDir: string;
     get value(): Direction;
     // (undocumented)
-    static ɵdir: i0.ɵɵDirectiveDeclaration<Dir, "[dir]", ["dir"], { "dir": "dir"; }, { "change": "dirChange"; }, never>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<Dir, "[dir]", ["dir"], { "dir": "dir"; }, { "change": "dirChange"; }, never, never, false>;
     // (undocumented)
     static ɵfac: i0.ɵɵFactoryDeclaration<Dir, never>;
 }

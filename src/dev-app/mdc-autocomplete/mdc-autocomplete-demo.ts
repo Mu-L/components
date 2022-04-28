@@ -27,7 +27,7 @@ export interface StateGroup {
   styleUrls: ['mdc-autocomplete-demo.css'],
 })
 export class MdcAutocompleteDemo {
-  stateCtrl: FormControl;
+  stateCtrl = new FormControl({code: 'CA', name: 'California'});
   currentState = '';
   currentGroupedState = '';
   topHeightCtrl = new FormControl(0);
@@ -96,7 +96,6 @@ export class MdcAutocompleteDemo {
 
   constructor() {
     this.tdStates = this.states;
-    this.stateCtrl = new FormControl({code: 'CA', name: 'California'});
     this.reactiveStates = this.stateCtrl.valueChanges.pipe(
       startWith(this.stateCtrl.value),
       map(val => this.displayFn(val)),

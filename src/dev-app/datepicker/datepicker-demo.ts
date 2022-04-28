@@ -53,10 +53,19 @@ export class DatepickerDemo {
   color: ThemePalette;
   showActions = false;
 
-  dateCtrl = new FormControl();
-  range1 = new FormGroup({start: new FormControl(), end: new FormControl()});
-  range2 = new FormGroup({start: new FormControl(), end: new FormControl()});
-  range3 = new FormGroup({start: new FormControl(), end: new FormControl()});
+  dateCtrl = new FormControl<Date | null>(null);
+  range1 = new FormGroup({
+    start: new FormControl<Date | null>(null),
+    end: new FormControl<Date | null>(null),
+  });
+  range2 = new FormGroup({
+    start: new FormControl<Date | null>(null),
+    end: new FormControl<Date | null>(null),
+  });
+  range3 = new FormGroup({
+    start: new FormControl<Date | null>(null),
+    end: new FormControl<Date | null>(null),
+  });
   comparisonStart: Date;
   comparisonEnd: Date;
 

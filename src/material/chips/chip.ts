@@ -7,7 +7,7 @@
  */
 
 import {FocusableOption} from '@angular/cdk/a11y';
-import {BooleanInput, coerceBooleanProperty, NumberInput} from '@angular/cdk/coercion';
+import {BooleanInput, coerceBooleanProperty} from '@angular/cdk/coercion';
 import {BACKSPACE, DELETE, SPACE} from '@angular/cdk/keycodes';
 import {Platform} from '@angular/cdk/platform';
 import {DOCUMENT} from '@angular/common';
@@ -116,9 +116,7 @@ export class MatChipAvatar {}
 })
 export class MatChipTrailingIcon {}
 
-/**
- * Material design styled Chip component. Used inside the MatChipList component.
- */
+/** Material Design styled chip directive. Used inside the MatChipList component. */
 @Directive({
   selector: `mat-basic-chip, [mat-basic-chip], mat-chip, [mat-chip]`,
   inputs: ['color', 'disableRipple', 'tabIndex'],
@@ -126,7 +124,7 @@ export class MatChipTrailingIcon {}
   host: {
     'class': 'mat-chip mat-focus-indicator',
     '[attr.tabindex]': 'disabled ? null : tabIndex',
-    'role': 'option',
+    '[attr.role]': 'role',
     '[class.mat-chip-selected]': 'selected',
     '[class.mat-chip-with-avatar]': 'avatar',
     '[class.mat-chip-with-trailing-icon]': 'trailingIcon || removeIcon',
@@ -207,12 +205,15 @@ export class MatChip
   /** The chip's remove toggler. */
   @ContentChild(MAT_CHIP_REMOVE) removeIcon: MatChipRemove;
 
+  /** ARIA role that should be applied to the chip. */
+  @Input() role: string = 'option';
+
   /** Whether the chip is selected. */
   @Input()
   get selected(): boolean {
     return this._selected;
   }
-  set selected(value: boolean) {
+  set selected(value: BooleanInput) {
     const coercedValue = coerceBooleanProperty(value);
 
     if (coercedValue !== this._selected) {
@@ -242,7 +243,7 @@ export class MatChip
   get selectable(): boolean {
     return this._selectable && this.chipListSelectable;
   }
-  set selectable(value: boolean) {
+  set selectable(value: BooleanInput) {
     this._selectable = coerceBooleanProperty(value);
   }
   protected _selectable: boolean = true;
@@ -252,7 +253,7 @@ export class MatChip
   get disabled(): boolean {
     return this._chipListDisabled || this._disabled;
   }
-  set disabled(value: boolean) {
+  set disabled(value: BooleanInput) {
     this._disabled = coerceBooleanProperty(value);
   }
   protected _disabled: boolean = false;
@@ -264,7 +265,7 @@ export class MatChip
   get removable(): boolean {
     return this._removable;
   }
-  set removable(value: boolean) {
+  set removable(value: BooleanInput) {
     this._removable = coerceBooleanProperty(value);
   }
   protected _removable: boolean = true;
@@ -404,8 +405,6 @@ export class MatChip
   _handleClick(event: Event) {
     if (this.disabled) {
       event.preventDefault();
-    } else {
-      event.stopPropagation();
     }
   }
 
@@ -455,13 +454,6 @@ export class MatChip
       selected: this._selected,
     });
   }
-
-  static ngAcceptInputType_selected: BooleanInput;
-  static ngAcceptInputType_selectable: BooleanInput;
-  static ngAcceptInputType_removable: BooleanInput;
-  static ngAcceptInputType_disabled: BooleanInput;
-  static ngAcceptInputType_disableRipple: BooleanInput;
-  static ngAcceptInputType_tabIndex: NumberInput;
 }
 
 /**
@@ -506,5 +498,6 @@ export class MatChipRemove {
     // the parent click listener of the `MatChip` would prevent propagation, but it can happen
     // that the chip is being removed before the event bubbles up.
     event.stopPropagation();
+    event.preventDefault();
   }
 }

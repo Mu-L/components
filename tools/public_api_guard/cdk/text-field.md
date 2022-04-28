@@ -10,7 +10,6 @@ import { DoCheck } from '@angular/core';
 import { ElementRef } from '@angular/core';
 import { EventEmitter } from '@angular/core';
 import * as i0 from '@angular/core';
-import * as i3 from '@angular/cdk/platform';
 import { NgZone } from '@angular/core';
 import { NumberInput } from '@angular/cdk/coercion';
 import { Observable } from 'rxjs';
@@ -48,7 +47,7 @@ export class CdkAutofill implements OnDestroy, OnInit {
     // (undocumented)
     ngOnInit(): void;
     // (undocumented)
-    static ɵdir: i0.ɵɵDirectiveDeclaration<CdkAutofill, "[cdkAutofill]", never, {}, { "cdkAutofill": "cdkAutofill"; }, never>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<CdkAutofill, "[cdkAutofill]", never, {}, { "cdkAutofill": "cdkAutofill"; }, never, never, false>;
     // (undocumented)
     static ɵfac: i0.ɵɵFactoryDeclaration<CdkAutofill, never>;
 }
@@ -59,17 +58,11 @@ export class CdkTextareaAutosize implements AfterViewInit, DoCheck, OnDestroy {
     document?: any);
     protected _document?: Document;
     get enabled(): boolean;
-    set enabled(value: boolean);
+    set enabled(value: BooleanInput);
     get maxRows(): number;
-    set maxRows(value: number);
+    set maxRows(value: NumberInput);
     get minRows(): number;
-    set minRows(value: number);
-    // (undocumented)
-    static ngAcceptInputType_enabled: BooleanInput;
-    // (undocumented)
-    static ngAcceptInputType_maxRows: NumberInput;
-    // (undocumented)
-    static ngAcceptInputType_minRows: NumberInput;
+    set minRows(value: NumberInput);
     // (undocumented)
     ngAfterViewInit(): void;
     // (undocumented)
@@ -86,7 +79,7 @@ export class CdkTextareaAutosize implements AfterViewInit, DoCheck, OnDestroy {
     _setMaxHeight(): void;
     _setMinHeight(): void;
     // (undocumented)
-    static ɵdir: i0.ɵɵDirectiveDeclaration<CdkTextareaAutosize, "textarea[cdkTextareaAutosize]", ["cdkTextareaAutosize"], { "minRows": "cdkAutosizeMinRows"; "maxRows": "cdkAutosizeMaxRows"; "enabled": "cdkTextareaAutosize"; "placeholder": "placeholder"; }, {}, never>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<CdkTextareaAutosize, "textarea[cdkTextareaAutosize]", ["cdkTextareaAutosize"], { "minRows": "cdkAutosizeMinRows"; "maxRows": "cdkAutosizeMaxRows"; "enabled": "cdkTextareaAutosize"; "placeholder": "placeholder"; }, {}, never, never, false>;
     // (undocumented)
     static ɵfac: i0.ɵɵFactoryDeclaration<CdkTextareaAutosize, [null, null, null, { optional: true; }]>;
 }
@@ -98,7 +91,7 @@ export class TextFieldModule {
     // (undocumented)
     static ɵinj: i0.ɵɵInjectorDeclaration<TextFieldModule>;
     // (undocumented)
-    static ɵmod: i0.ɵɵNgModuleDeclaration<TextFieldModule, [typeof i1.CdkAutofill, typeof i2.CdkTextareaAutosize], [typeof i3.PlatformModule], [typeof i1.CdkAutofill, typeof i2.CdkTextareaAutosize]>;
+    static ɵmod: i0.ɵɵNgModuleDeclaration<TextFieldModule, [typeof i1.CdkAutofill, typeof i2.CdkTextareaAutosize], never, [typeof i1.CdkAutofill, typeof i2.CdkTextareaAutosize]>;
 }
 
 // (No @packageDocumentation comment for this package)

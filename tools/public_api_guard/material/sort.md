@@ -58,12 +58,8 @@ export class MatSort extends _MatSortBase implements CanDisable, HasInitialized,
     get direction(): SortDirection;
     set direction(direction: SortDirection);
     get disableClear(): boolean;
-    set disableClear(v: boolean);
+    set disableClear(v: BooleanInput);
     getNextSortDirection(sortable: MatSortable): SortDirection;
-    // (undocumented)
-    static ngAcceptInputType_disableClear: BooleanInput;
-    // (undocumented)
-    static ngAcceptInputType_disabled: BooleanInput;
     // (undocumented)
     ngOnChanges(): void;
     // (undocumented)
@@ -74,10 +70,10 @@ export class MatSort extends _MatSortBase implements CanDisable, HasInitialized,
     sort(sortable: MatSortable): void;
     sortables: Map<string, MatSortable>;
     readonly sortChange: EventEmitter<Sort>;
-    start: 'asc' | 'desc';
+    start: SortDirection;
     readonly _stateChanges: Subject<void>;
     // (undocumented)
-    static ɵdir: i0.ɵɵDirectiveDeclaration<MatSort, "[matSort]", ["matSort"], { "disabled": "matSortDisabled"; "active": "matSortActive"; "start": "matSortStart"; "direction": "matSortDirection"; "disableClear": "matSortDisableClear"; }, { "sortChange": "matSortChange"; }, never>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<MatSort, "[matSort]", ["matSort"], { "disabled": "matSortDisabled"; "active": "matSortActive"; "start": "matSortStart"; "direction": "matSortDirection"; "disableClear": "matSortDisableClear"; }, { "sortChange": "matSortChange"; }, never, never, false>;
     // (undocumented)
     static ɵfac: i0.ɵɵFactoryDeclaration<MatSort, [{ optional: true; }]>;
 }
@@ -86,7 +82,7 @@ export class MatSort extends _MatSortBase implements CanDisable, HasInitialized,
 export interface MatSortable {
     disableClear: boolean;
     id: string;
-    start: 'asc' | 'desc';
+    start: SortDirection;
 }
 
 // @public
@@ -101,6 +97,7 @@ export const matSortAnimations: {
 
 // @public
 export interface MatSortDefaultOptions {
+    arrowPosition?: SortHeaderArrowPosition;
     disableClear?: boolean;
 }
 
@@ -108,13 +105,13 @@ export interface MatSortDefaultOptions {
 export class MatSortHeader extends _MatSortHeaderBase implements CanDisable, MatSortable, OnDestroy, OnInit, AfterViewInit {
     constructor(
     _intl: MatSortHeaderIntl, _changeDetectorRef: ChangeDetectorRef, _sort: MatSort, _columnDef: MatSortHeaderColumnDef, _focusMonitor: FocusMonitor, _elementRef: ElementRef<HTMLElement>,
-    _ariaDescriber?: AriaDescriber | null | undefined);
+    _ariaDescriber?: AriaDescriber | null | undefined, defaultOptions?: MatSortDefaultOptions);
     _arrowDirection: SortDirection;
-    arrowPosition: 'before' | 'after';
+    arrowPosition: SortHeaderArrowPosition;
     // (undocumented)
     _columnDef: MatSortHeaderColumnDef;
     get disableClear(): boolean;
-    set disableClear(v: boolean);
+    set disableClear(v: BooleanInput);
     _disableViewStateAnimation: boolean;
     _getAriaSortAttribute(): "none" | "ascending" | "descending";
     _getArrowDirectionState(): string;
@@ -130,10 +127,6 @@ export class MatSortHeader extends _MatSortHeaderBase implements CanDisable, Mat
     _isDisabled(): boolean;
     _isSorted(): boolean;
     // (undocumented)
-    static ngAcceptInputType_disableClear: BooleanInput;
-    // (undocumented)
-    static ngAcceptInputType_disabled: BooleanInput;
-    // (undocumented)
     ngAfterViewInit(): void;
     // (undocumented)
     ngOnDestroy(): void;
@@ -147,14 +140,14 @@ export class MatSortHeader extends _MatSortHeaderBase implements CanDisable, Mat
     _sort: MatSort;
     get sortActionDescription(): string;
     set sortActionDescription(value: string);
-    start: 'asc' | 'desc';
+    start: SortDirection;
     _toggleOnInteraction(): void;
     _updateArrowDirection(): void;
     _viewState: ArrowViewStateTransition;
     // (undocumented)
-    static ɵcmp: i0.ɵɵComponentDeclaration<MatSortHeader, "[mat-sort-header]", ["matSortHeader"], { "disabled": "disabled"; "id": "mat-sort-header"; "arrowPosition": "arrowPosition"; "start": "start"; "sortActionDescription": "sortActionDescription"; "disableClear": "disableClear"; }, {}, never, ["*"]>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<MatSortHeader, "[mat-sort-header]", ["matSortHeader"], { "disabled": "disabled"; "id": "mat-sort-header"; "arrowPosition": "arrowPosition"; "start": "start"; "sortActionDescription": "sortActionDescription"; "disableClear": "disableClear"; }, {}, never, ["*"], false>;
     // (undocumented)
-    static ɵfac: i0.ɵɵFactoryDeclaration<MatSortHeader, [null, null, { optional: true; }, { optional: true; }, null, null, { optional: true; }]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<MatSortHeader, [null, null, { optional: true; }, { optional: true; }, null, null, { optional: true; }, { optional: true; }]>;
 }
 
 // @public
@@ -184,6 +177,9 @@ export interface Sort {
 
 // @public
 export type SortDirection = 'asc' | 'desc' | '';
+
+// @public
+export type SortHeaderArrowPosition = 'before' | 'after';
 
 // (No @packageDocumentation comment for this package)
 

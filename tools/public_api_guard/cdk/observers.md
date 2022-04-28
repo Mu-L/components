@@ -18,20 +18,16 @@ import { OnDestroy } from '@angular/core';
 export class CdkObserveContent implements AfterContentInit, OnDestroy {
     constructor(_contentObserver: ContentObserver, _elementRef: ElementRef<HTMLElement>, _ngZone: NgZone);
     get debounce(): number;
-    set debounce(value: number);
-    get disabled(): any;
-    set disabled(value: any);
+    set debounce(value: NumberInput);
+    get disabled(): boolean;
+    set disabled(value: BooleanInput);
     readonly event: EventEmitter<MutationRecord[]>;
-    // (undocumented)
-    static ngAcceptInputType_debounce: NumberInput;
-    // (undocumented)
-    static ngAcceptInputType_disabled: BooleanInput;
     // (undocumented)
     ngAfterContentInit(): void;
     // (undocumented)
     ngOnDestroy(): void;
     // (undocumented)
-    static ɵdir: i0.ɵɵDirectiveDeclaration<CdkObserveContent, "[cdkObserveContent]", ["cdkObserveContent"], { "disabled": "cdkObserveContentDisabled"; "debounce": "debounce"; }, { "event": "cdkObserveContent"; }, never>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<CdkObserveContent, "[cdkObserveContent]", ["cdkObserveContent"], { "disabled": "cdkObserveContentDisabled"; "debounce": "debounce"; }, { "event": "cdkObserveContent"; }, never, never, false>;
     // (undocumented)
     static ɵfac: i0.ɵɵFactoryDeclaration<CdkObserveContent, never>;
 }

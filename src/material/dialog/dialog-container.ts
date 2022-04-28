@@ -38,7 +38,7 @@ import {
   ViewChild,
   ViewEncapsulation,
 } from '@angular/core';
-import {matDialogAnimations} from './dialog-animations';
+import {matDialogAnimations, defaultParams} from './dialog-animations';
 import {MatDialogConfig} from './dialog-config';
 
 /** Event that captures the state of dialog container animations. */
@@ -110,10 +110,17 @@ export abstract class _MatDialogContainerBase extends BasePortalOutlet {
 
   /** Initializes the dialog container with the attached content. */
   _initializeWithAttachedContent() {
-    this._setupFocusTrap();
+    this._focusTrap = this._focusTrapFactory.create(this._elementRef.nativeElement);
+
     // Save the previously focused element. This element will be re-focused
     // when the dialog closes.
-    this._capturePreviouslyFocusedElement();
+    if (this._document) {
+      this._elementFocusedBeforeDialogWasOpened = _getFocusedElementPierceShadowDom();
+    }
+
+    if (!this._config.delayFocusTrap) {
+      this._trapFocus();
+    }
   }
 
   /**
@@ -171,8 +178,14 @@ export abstract class _MatDialogContainerBase extends BasePortalOutlet {
       element.tabIndex = -1;
       // The tabindex attribute should be removed to avoid navigating to that element again
       this._ngZone.runOutsideAngular(() => {
-        element.addEventListener('blur', () => element.removeAttribute('tabindex'));
-        element.addEventListener('mousedown', () => element.removeAttribute('tabindex'));
+        const callback = () => {
+          element.removeEventListener('blur', callback);
+          element.removeEventListener('mousedown', callback);
+          element.removeAttribute('tabindex');
+        };
+
+        element.addEventListener('blur', callback);
+        element.addEventListener('mousedown', callback);
       });
     }
     element.focus(options);
@@ -270,18 +283,6 @@ export abstract class _MatDialogContainerBase extends BasePortalOutlet {
     }
   }
 
-  /** Sets up the focus trap. */
-  private _setupFocusTrap() {
-    this._focusTrap = this._focusTrapFactory.create(this._elementRef.nativeElement);
-  }
-
-  /** Captures the element that was focused before the dialog was opened. */
-  private _capturePreviouslyFocusedElement() {
-    if (this._document) {
-      this._elementFocusedBeforeDialogWasOpened = _getFocusedElementPierceShadowDom();
-    }
-  }
-
   /** Focuses the dialog container. */
   private _focusDialogContainer() {
     // Note that there is no focus method when rendering on the server.
@@ -295,6 +296,18 @@ export abstract class _MatDialogContainerBase extends BasePortalOutlet {
     const element = this._elementRef.nativeElement;
     const activeElement = _getFocusedElementPierceShadowDom();
     return element === activeElement || element.contains(activeElement);
+  }
+
+  /**
+   * Callback for when the open dialog animation has finished. Intended to
+   * be called by sub-classes that use different animation implementations.
+   */
+  protected _openAnimationDone(totalTime: number) {
+    if (this._config.delayFocusTrap) {
+      this._trapFocus();
+    }
+
+    this._animationStateChanged.next({state: 'opened', totalTime});
   }
 }
 
@@ -321,7 +334,7 @@ export abstract class _MatDialogContainerBase extends BasePortalOutlet {
     '[attr.aria-labelledby]': '_config.ariaLabel ? null : _ariaLabelledBy',
     '[attr.aria-label]': '_config.ariaLabel',
     '[attr.aria-describedby]': '_config.ariaDescribedBy || null',
-    '[@dialogContainer]': '_state',
+    '[@dialogContainer]': `_getAnimationState()`,
     '(@dialogContainer.start)': '_onAnimationStart($event)',
     '(@dialogContainer.done)': '_onAnimationDone($event)',
   },
@@ -333,8 +346,7 @@ export class MatDialogContainer extends _MatDialogContainerBase {
   /** Callback, invoked whenever an animation on the host completes. */
   _onAnimationDone({toState, totalTime}: AnimationEvent) {
     if (toState === 'enter') {
-      this._trapFocus();
-      this._animationStateChanged.next({state: 'opened', totalTime});
+      this._openAnimationDone(totalTime);
     } else if (toState === 'exit') {
       this._restoreFocus();
       this._animationStateChanged.next({state: 'closed', totalTime});
@@ -357,5 +369,17 @@ export class MatDialogContainer extends _MatDialogContainerBase {
     // Mark the container for check so it can react if the
     // view container is using OnPush change detection.
     this._changeDetectorRef.markForCheck();
+  }
+
+  _getAnimationState() {
+    return {
+      value: this._state,
+      params: {
+        'enterAnimationDuration':
+          this._config.enterAnimationDuration || defaultParams.params.enterAnimationDuration,
+        'exitAnimationDuration':
+          this._config.exitAnimationDuration || defaultParams.params.exitAnimationDuration,
+      },
+    };
   }
 }

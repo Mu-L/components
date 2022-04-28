@@ -16,7 +16,7 @@ import {FormControl} from '@angular/forms';
 export class CdkListboxDemo {
   multiSelectable = false;
   activeDescendant = true;
-  formControl = new FormControl();
+  formControl = new FormControl('');
 
   disableForm() {
     this.formControl.disable();

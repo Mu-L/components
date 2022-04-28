@@ -1,0 +1,31 @@
+<button cdkMenuItem [cdkMenuTriggerFor]="menu" class="example-standalone-item">Click me!</button>
+
+<ng-template #menu>
+  <div class="example-menu" cdkMenu>
+    <button
+        cdkMenuItemCheckbox
+        class="example-menu-item"
+        [cdkMenuItemChecked]="bold"
+        (cdkMenuItemTriggered)="bold = !bold">
+      Bold
+    </button>
+    <button
+        cdkMenuItemCheckbox
+        class="example-menu-item"
+        [cdkMenuItemChecked]="italic"
+        (cdkMenuItemTriggered)="italic = !italic">
+      Italic
+    </button>
+    <hr />
+    <div cdkMenuGroup>
+      <button
+          *ngFor="let size of sizes"
+          cdkMenuItemRadio
+          class="example-menu-item"
+          [cdkMenuItemChecked]="size === selectedSize"
+          (cdkMenuItemTriggered)="selectedSize = size">
+        {{size}}
+      </button>
+    </div>
+  </div>
+</ng-template>

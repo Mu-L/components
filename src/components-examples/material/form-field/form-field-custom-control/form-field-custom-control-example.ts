@@ -55,7 +55,11 @@ export class MyTelInput implements ControlValueAccessor, MatFormFieldControl<MyT
   @ViewChild('exchange') exchangeInput: HTMLInputElement;
   @ViewChild('subscriber') subscriberInput: HTMLInputElement;
 
-  parts: FormGroup;
+  parts = this._formBuilder.group({
+    area: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(3)]],
+    exchange: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(3)]],
+    subscriber: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(4)]],
+  });
   stateChanges = new Subject<void>();
   focused = false;
   touched = false;
@@ -92,7 +96,7 @@ export class MyTelInput implements ControlValueAccessor, MatFormFieldControl<MyT
   get required(): boolean {
     return this._required;
   }
-  set required(value: boolean) {
+  set required(value: BooleanInput) {
     this._required = coerceBooleanProperty(value);
     this.stateChanges.next();
   }
@@ -102,7 +106,7 @@ export class MyTelInput implements ControlValueAccessor, MatFormFieldControl<MyT
   get disabled(): boolean {
     return this._disabled;
   }
-  set disabled(value: boolean) {
+  set disabled(value: BooleanInput) {
     this._disabled = coerceBooleanProperty(value);
     this._disabled ? this.parts.disable() : this.parts.enable();
     this.stateChanges.next();
@@ -115,7 +119,7 @@ export class MyTelInput implements ControlValueAccessor, MatFormFieldControl<MyT
       const {
         value: {area, exchange, subscriber},
       } = this.parts;
-      return new MyTel(area, exchange, subscriber);
+      return new MyTel(area!, exchange!, subscriber!);
     }
     return null;
   }
@@ -130,18 +134,12 @@ export class MyTelInput implements ControlValueAccessor, MatFormFieldControl<MyT
   }
 
   constructor(
-    formBuilder: FormBuilder,
+    private _formBuilder: FormBuilder,
     private _focusMonitor: FocusMonitor,
     private _elementRef: ElementRef<HTMLElement>,
     @Optional() @Inject(MAT_FORM_FIELD) public _formField: MatFormField,
     @Optional() @Self() public ngControl: NgControl,
   ) {
-    this.parts = formBuilder.group({
-      area: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(3)]],
-      exchange: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(3)]],
-      subscriber: [null, [Validators.required, Validators.minLength(4), Validators.maxLength(4)]],
-    });
-
     if (this.ngControl != null) {
       this.ngControl.valueAccessor = this;
     }
@@ -219,7 +217,4 @@ export class MyTelInput implements ControlValueAccessor, MatFormFieldControl<MyT
     this.autoFocusNext(control, nextElement);
     this.onChange(this.value);
   }
-
-  static ngAcceptInputType_disabled: BooleanInput;
-  static ngAcceptInputType_required: BooleanInput;
 }

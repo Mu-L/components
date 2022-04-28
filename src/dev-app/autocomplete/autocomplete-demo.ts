@@ -27,7 +27,7 @@ export interface StateGroup {
   styleUrls: ['autocomplete-demo.css'],
 })
 export class AutocompleteDemo {
-  stateCtrl: FormControl;
+  stateCtrl = new FormControl({code: 'CA', name: 'California'});
   currentState = '';
   currentGroupedState = '';
   topHeightCtrl = new FormControl(0);
@@ -96,7 +96,6 @@ export class AutocompleteDemo {
 
   constructor() {
     this.tdStates = this.states;
-    this.stateCtrl = new FormControl({code: 'CA', name: 'California'});
     this.reactiveStates = this.stateCtrl.valueChanges.pipe(
       startWith(this.stateCtrl.value),
       map(val => this.displayFn(val)),

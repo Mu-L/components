@@ -7,7 +7,7 @@
  */
 
 import {Component, ViewEncapsulation} from '@angular/core';
-import {CdkMenu, CdkMenuItem, CdkMenuGroup, CDK_MENU} from '@angular/cdk-experimental/menu';
+import {CdkMenu, CdkMenuItem, CdkMenuGroup, CDK_MENU} from '@angular/cdk/menu';
 
 @Component({
   templateUrl: 'mat-menubar-demo.html',
@@ -20,10 +20,10 @@ export class MatMenuBarDemo {}
   exportAs: 'demoMenu',
   template: '<ng-content></ng-content>',
   host: {
-    '[tabindex]': '_isInline() ? 0 : null',
+    '[tabindex]': 'isInline() ? 0 : null',
     'role': 'menu',
     'class': 'cdk-menu mat-menu mat-menu-panel',
-    '[class.cdk-menu-inline]': '_isInline()',
+    '[class.cdk-menu-inline]': 'isInline()',
     '[attr.aria-orientation]': 'orientation',
   },
   providers: [

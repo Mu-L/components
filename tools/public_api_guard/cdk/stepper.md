@@ -29,34 +29,26 @@ export class CdkStep implements OnChanges {
     ariaLabel: string;
     ariaLabelledby: string;
     get completed(): boolean;
-    set completed(value: boolean);
+    set completed(value: BooleanInput);
     // (undocumented)
     _completedOverride: boolean | null;
     content: TemplateRef<any>;
     // (undocumented)
     _displayDefaultIndicatorType: boolean;
     get editable(): boolean;
-    set editable(value: boolean);
+    set editable(value: BooleanInput);
     errorMessage: string;
     get hasError(): boolean;
-    set hasError(value: boolean);
+    set hasError(value: BooleanInput);
     interacted: boolean;
     readonly interactedStream: EventEmitter<CdkStep>;
     label: string;
     // (undocumented)
     _markAsInteracted(): void;
     // (undocumented)
-    static ngAcceptInputType_completed: BooleanInput;
-    // (undocumented)
-    static ngAcceptInputType_editable: BooleanInput;
-    // (undocumented)
-    static ngAcceptInputType_hasError: BooleanInput;
-    // (undocumented)
-    static ngAcceptInputType_optional: BooleanInput;
-    // (undocumented)
     ngOnChanges(): void;
     get optional(): boolean;
-    set optional(value: boolean);
+    set optional(value: BooleanInput);
     reset(): void;
     select(): void;
     _showError(): boolean;
@@ -66,7 +58,7 @@ export class CdkStep implements OnChanges {
     // (undocumented)
     _stepper: CdkStepper;
     // (undocumented)
-    static ɵcmp: i0.ɵɵComponentDeclaration<CdkStep, "cdk-step", ["cdkStep"], { "stepControl": "stepControl"; "label": "label"; "errorMessage": "errorMessage"; "ariaLabel": "aria-label"; "ariaLabelledby": "aria-labelledby"; "state": "state"; "editable": "editable"; "optional": "optional"; "completed": "completed"; "hasError": "hasError"; }, { "interactedStream": "interacted"; }, ["stepLabel"], ["*"]>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<CdkStep, "cdk-step", ["cdkStep"], { "stepControl": "stepControl"; "label": "label"; "errorMessage": "errorMessage"; "ariaLabel": "aria-label"; "ariaLabelledby": "aria-labelledby"; "state": "state"; "editable": "editable"; "optional": "optional"; "completed": "completed"; "hasError": "hasError"; }, { "interactedStream": "interacted"; }, ["stepLabel"], ["*"], false>;
     // (undocumented)
     static ɵfac: i0.ɵɵFactoryDeclaration<CdkStep, [null, { optional: true; }]>;
 }
@@ -78,7 +70,7 @@ export class CdkStepHeader implements FocusableOption {
     _elementRef: ElementRef<HTMLElement>;
     focus(): void;
     // (undocumented)
-    static ɵdir: i0.ɵɵDirectiveDeclaration<CdkStepHeader, "[cdkStepHeader]", never, {}, {}, never>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<CdkStepHeader, "[cdkStepHeader]", never, {}, {}, never, never, false>;
     // (undocumented)
     static ɵfac: i0.ɵɵFactoryDeclaration<CdkStepHeader, never>;
 }
@@ -89,15 +81,14 @@ export class CdkStepLabel {
     // (undocumented)
     template: TemplateRef<any>;
     // (undocumented)
-    static ɵdir: i0.ɵɵDirectiveDeclaration<CdkStepLabel, "[cdkStepLabel]", never, {}, {}, never>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<CdkStepLabel, "[cdkStepLabel]", never, {}, {}, never, never, false>;
     // (undocumented)
     static ɵfac: i0.ɵɵFactoryDeclaration<CdkStepLabel, never>;
 }
 
 // @public (undocumented)
 export class CdkStepper implements AfterContentInit, AfterViewInit, OnDestroy {
-    constructor(_dir: Directionality, _changeDetectorRef: ChangeDetectorRef, _elementRef: ElementRef<HTMLElement>,
-    _document: any);
+    constructor(_dir: Directionality, _changeDetectorRef: ChangeDetectorRef, _elementRef: ElementRef<HTMLElement>);
     protected readonly _destroyed: Subject<void>;
     _getAnimationDirection(index: number): StepContentPositionState;
     _getFocusIndex(): number | null;
@@ -106,20 +97,8 @@ export class CdkStepper implements AfterContentInit, AfterViewInit, OnDestroy {
     _getStepLabelId(i: number): string;
     _groupId: number;
     get linear(): boolean;
-    set linear(value: boolean);
+    set linear(value: BooleanInput);
     next(): void;
-    // (undocumented)
-    static ngAcceptInputType_completed: BooleanInput;
-    // (undocumented)
-    static ngAcceptInputType_editable: BooleanInput;
-    // (undocumented)
-    static ngAcceptInputType_hasError: BooleanInput;
-    // (undocumented)
-    static ngAcceptInputType_linear: BooleanInput;
-    // (undocumented)
-    static ngAcceptInputType_optional: BooleanInput;
-    // (undocumented)
-    static ngAcceptInputType_selectedIndex: NumberInput;
     // (undocumented)
     ngAfterContentInit(): void;
     // (undocumented)
@@ -130,23 +109,21 @@ export class CdkStepper implements AfterContentInit, AfterViewInit, OnDestroy {
     _onKeydown(event: KeyboardEvent): void;
     get orientation(): StepperOrientation;
     set orientation(value: StepperOrientation);
-    // @deprecated (undocumented)
-    protected _orientation: StepperOrientation;
     previous(): void;
     reset(): void;
     get selected(): CdkStep | undefined;
     set selected(step: CdkStep | undefined);
     get selectedIndex(): number;
-    set selectedIndex(index: number);
+    set selectedIndex(index: NumberInput);
     readonly selectionChange: EventEmitter<StepperSelectionEvent>;
     _stateChanged(): void;
     _stepHeader: QueryList<CdkStepHeader>;
     readonly steps: QueryList<CdkStep>;
     _steps: QueryList<CdkStep>;
     // (undocumented)
-    static ɵdir: i0.ɵɵDirectiveDeclaration<CdkStepper, "[cdkStepper]", ["cdkStepper"], { "linear": "linear"; "selectedIndex": "selectedIndex"; "selected": "selected"; "orientation": "orientation"; }, { "selectionChange": "selectionChange"; }, ["_steps", "_stepHeader"]>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<CdkStepper, "[cdkStepper]", ["cdkStepper"], { "linear": "linear"; "selectedIndex": "selectedIndex"; "selected": "selected"; "orientation": "orientation"; }, { "selectionChange": "selectionChange"; }, ["_steps", "_stepHeader"], never, false>;
     // (undocumented)
-    static ɵfac: i0.ɵɵFactoryDeclaration<CdkStepper, [{ optional: true; }, null, null, null]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<CdkStepper, [{ optional: true; }, null, null]>;
 }
 
 // @public (undocumented)
@@ -163,12 +140,10 @@ export class CdkStepperModule {
 export class CdkStepperNext {
     constructor(_stepper: CdkStepper);
     // (undocumented)
-    _handleClick(): void;
-    // (undocumented)
     _stepper: CdkStepper;
     type: string;
     // (undocumented)
-    static ɵdir: i0.ɵɵDirectiveDeclaration<CdkStepperNext, "button[cdkStepperNext]", never, { "type": "type"; }, {}, never>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<CdkStepperNext, "button[cdkStepperNext]", never, { "type": "type"; }, {}, never, never, false>;
     // (undocumented)
     static ɵfac: i0.ɵɵFactoryDeclaration<CdkStepperNext, never>;
 }
@@ -177,12 +152,10 @@ export class CdkStepperNext {
 export class CdkStepperPrevious {
     constructor(_stepper: CdkStepper);
     // (undocumented)
-    _handleClick(): void;
-    // (undocumented)
     _stepper: CdkStepper;
     type: string;
     // (undocumented)
-    static ɵdir: i0.ɵɵDirectiveDeclaration<CdkStepperPrevious, "button[cdkStepperPrevious]", never, { "type": "type"; }, {}, never>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<CdkStepperPrevious, "button[cdkStepperPrevious]", never, { "type": "type"; }, {}, never, never, false>;
     // (undocumented)
     static ɵfac: i0.ɵɵFactoryDeclaration<CdkStepperPrevious, never>;
 }

@@ -13,7 +13,6 @@ import { DoCheck } from '@angular/core';
 import { ElementRef } from '@angular/core';
 import * as i0 from '@angular/core';
 import * as i5 from '@angular/cdk/bidi';
-import * as i6 from '@angular/cdk/platform';
 import { InjectionToken } from '@angular/core';
 import { IterableDiffers } from '@angular/core';
 import { ListRange } from '@angular/cdk/collections';
@@ -40,28 +39,22 @@ export type _Bottom = {
 // @public
 export class CdkFixedSizeVirtualScroll implements OnChanges {
     get itemSize(): number;
-    set itemSize(value: number);
+    set itemSize(value: NumberInput);
     // (undocumented)
     _itemSize: number;
     get maxBufferPx(): number;
-    set maxBufferPx(value: number);
+    set maxBufferPx(value: NumberInput);
     // (undocumented)
     _maxBufferPx: number;
     get minBufferPx(): number;
-    set minBufferPx(value: number);
+    set minBufferPx(value: NumberInput);
     // (undocumented)
     _minBufferPx: number;
-    // (undocumented)
-    static ngAcceptInputType_itemSize: NumberInput;
-    // (undocumented)
-    static ngAcceptInputType_maxBufferPx: NumberInput;
-    // (undocumented)
-    static ngAcceptInputType_minBufferPx: NumberInput;
     // (undocumented)
     ngOnChanges(): void;
     _scrollStrategy: FixedSizeVirtualScrollStrategy;
     // (undocumented)
-    static ɵdir: i0.ɵɵDirectiveDeclaration<CdkFixedSizeVirtualScroll, "cdk-virtual-scroll-viewport[itemSize]", never, { "itemSize": "itemSize"; "minBufferPx": "minBufferPx"; "maxBufferPx": "maxBufferPx"; }, {}, never>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<CdkFixedSizeVirtualScroll, "cdk-virtual-scroll-viewport[itemSize]", never, { "itemSize": "itemSize"; "minBufferPx": "minBufferPx"; "maxBufferPx": "maxBufferPx"; }, {}, never, never, false>;
     // (undocumented)
     static ɵfac: i0.ɵɵFactoryDeclaration<CdkFixedSizeVirtualScroll, never>;
 }
@@ -86,7 +79,7 @@ export class CdkScrollable implements OnInit, OnDestroy {
     protected scrollDispatcher: ScrollDispatcher;
     scrollTo(options: ExtendedScrollToOptions): void;
     // (undocumented)
-    static ɵdir: i0.ɵɵDirectiveDeclaration<CdkScrollable, "[cdk-scrollable], [cdkScrollable]", never, {}, {}, never>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<CdkScrollable, "[cdk-scrollable], [cdkScrollable]", never, {}, {}, never, never, false>;
     // (undocumented)
     static ɵfac: i0.ɵɵFactoryDeclaration<CdkScrollable, [null, null, null, { optional: true; }]>;
 }
@@ -115,20 +108,18 @@ export class CdkVirtualForOf<T> implements CdkVirtualScrollRepeater<T>, Collecti
     _cdkVirtualForOf: DataSource<T> | Observable<T[]> | NgIterable<T> | null | undefined;
     set cdkVirtualForTemplate(value: TemplateRef<CdkVirtualForOfContext<T>>);
     get cdkVirtualForTemplateCacheSize(): number;
-    set cdkVirtualForTemplateCacheSize(size: number);
+    set cdkVirtualForTemplateCacheSize(size: NumberInput);
     get cdkVirtualForTrackBy(): TrackByFunction<T> | undefined;
     set cdkVirtualForTrackBy(fn: TrackByFunction<T> | undefined);
     readonly dataStream: Observable<readonly T[]>;
     measureRangeSize(range: ListRange, orientation: 'horizontal' | 'vertical'): number;
-    // (undocumented)
-    static ngAcceptInputType_cdkVirtualForTemplateCacheSize: NumberInput;
     // (undocumented)
     ngDoCheck(): void;
     // (undocumented)
     ngOnDestroy(): void;
     readonly viewChange: Subject<ListRange>;
     // (undocumented)
-    static ɵdir: i0.ɵɵDirectiveDeclaration<CdkVirtualForOf<any>, "[cdkVirtualFor][cdkVirtualForOf]", never, { "cdkVirtualForOf": "cdkVirtualForOf"; "cdkVirtualForTrackBy": "cdkVirtualForTrackBy"; "cdkVirtualForTemplate": "cdkVirtualForTemplate"; "cdkVirtualForTemplateCacheSize": "cdkVirtualForTemplateCacheSize"; }, {}, never>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<CdkVirtualForOf<any>, "[cdkVirtualFor][cdkVirtualForOf]", never, { "cdkVirtualForOf": "cdkVirtualForOf"; "cdkVirtualForTrackBy": "cdkVirtualForTrackBy"; "cdkVirtualForTemplate": "cdkVirtualForTemplate"; "cdkVirtualForTemplateCacheSize": "cdkVirtualForTemplateCacheSize"; }, {}, never, never, false>;
     // (undocumented)
     static ɵfac: i0.ɵɵFactoryDeclaration<CdkVirtualForOf<any>, [null, null, null, null, { skipSelf: true; }, null]>;
 }
@@ -157,7 +148,7 @@ export interface CdkVirtualScrollRepeater<T> {
 export class CdkVirtualScrollViewport extends CdkScrollable implements OnInit, OnDestroy {
     constructor(elementRef: ElementRef<HTMLElement>, _changeDetectorRef: ChangeDetectorRef, ngZone: NgZone, _scrollStrategy: VirtualScrollStrategy, dir: Directionality, scrollDispatcher: ScrollDispatcher, viewportRuler: ViewportRuler);
     get appendOnly(): boolean;
-    set appendOnly(value: boolean);
+    set appendOnly(value: BooleanInput);
     attach(forOf: CdkVirtualScrollRepeater<any>): void;
     checkViewportSize(): void;
     _contentWrapper: ElementRef<HTMLElement>;
@@ -171,8 +162,6 @@ export class CdkVirtualScrollViewport extends CdkScrollable implements OnInit, O
     measureRangeSize(range: ListRange): number;
     measureRenderedContentSize(): number;
     measureScrollOffset(from?: 'top' | 'left' | 'right' | 'bottom' | 'start' | 'end'): number;
-    // (undocumented)
-    static ngAcceptInputType_appendOnly: BooleanInput;
     // (undocumented)
     ngOnDestroy(): void;
     // (undocumented)
@@ -189,7 +178,7 @@ export class CdkVirtualScrollViewport extends CdkScrollable implements OnInit, O
     _totalContentHeight: string;
     _totalContentWidth: string;
     // (undocumented)
-    static ɵcmp: i0.ɵɵComponentDeclaration<CdkVirtualScrollViewport, "cdk-virtual-scroll-viewport", never, { "orientation": "orientation"; "appendOnly": "appendOnly"; }, { "scrolledIndexChange": "scrolledIndexChange"; }, never, ["*"]>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<CdkVirtualScrollViewport, "cdk-virtual-scroll-viewport", never, { "orientation": "orientation"; "appendOnly": "appendOnly"; }, { "scrolledIndexChange": "scrolledIndexChange"; }, never, ["*"], false>;
     // (undocumented)
     static ɵfac: i0.ɵɵFactoryDeclaration<CdkVirtualScrollViewport, [null, null, null, { optional: true; }, { optional: true; }, null, null]>;
 }
@@ -261,7 +250,7 @@ export class ScrollingModule {
     // (undocumented)
     static ɵinj: i0.ɵɵInjectorDeclaration<ScrollingModule>;
     // (undocumented)
-    static ɵmod: i0.ɵɵNgModuleDeclaration<ScrollingModule, [typeof i2.CdkFixedSizeVirtualScroll, typeof i3.CdkVirtualForOf, typeof i4.CdkVirtualScrollViewport], [typeof i5.BidiModule, typeof i6.PlatformModule, typeof CdkScrollableModule], [typeof i5.BidiModule, typeof CdkScrollableModule, typeof i2.CdkFixedSizeVirtualScroll, typeof i3.CdkVirtualForOf, typeof i4.CdkVirtualScrollViewport]>;
+    static ɵmod: i0.ɵɵNgModuleDeclaration<ScrollingModule, [typeof i2.CdkFixedSizeVirtualScroll, typeof i3.CdkVirtualForOf, typeof i4.CdkVirtualScrollViewport], [typeof i5.BidiModule, typeof CdkScrollableModule], [typeof i5.BidiModule, typeof CdkScrollableModule, typeof i2.CdkFixedSizeVirtualScroll, typeof i3.CdkVirtualForOf, typeof i4.CdkVirtualScrollViewport]>;
 }
 
 // @public (undocumented)

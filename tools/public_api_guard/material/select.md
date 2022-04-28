@@ -100,7 +100,7 @@ export class MatSelect extends _MatSelectBase<MatSelectChange> implements OnInit
     _triggerFontSize: number;
     _triggerRect: ClientRect;
     // (undocumented)
-    static ɵcmp: i0.ɵɵComponentDeclaration<MatSelect, "mat-select", ["matSelect"], { "disabled": "disabled"; "disableRipple": "disableRipple"; "tabIndex": "tabIndex"; }, {}, ["customTrigger", "options", "optionGroups"], ["mat-select-trigger", "*"]>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<MatSelect, "mat-select", ["matSelect"], { "disabled": "disabled"; "disableRipple": "disableRipple"; "tabIndex": "tabIndex"; }, {}, ["customTrigger", "options", "optionGroups"], ["mat-select-trigger", "*"], false>;
     // (undocumented)
     static ɵfac: i0.ɵɵFactoryDeclaration<MatSelect, never>;
 }
@@ -114,7 +114,6 @@ export const matSelectAnimations: {
 // @public
 export abstract class _MatSelectBase<C> extends _MatSelectMixinBase implements AfterContentInit, OnChanges, OnDestroy, OnInit, DoCheck, ControlValueAccessor, CanDisable, HasTabIndex, MatFormFieldControl<any>, CanUpdateErrorState, CanDisableRipple {
     constructor(_viewportRuler: ViewportRuler, _changeDetectorRef: ChangeDetectorRef, _ngZone: NgZone, _defaultErrorStateMatcher: ErrorStateMatcher, elementRef: ElementRef, _dir: Directionality, _parentForm: NgForm, _parentFormGroup: FormGroupDirective, _parentFormField: MatFormField, ngControl: NgControl, tabIndex: string, scrollStrategyFactory: any, _liveAnnouncer: LiveAnnouncer, _defaultOptions?: MatSelectConfig | undefined);
-    _ariaDescribedby: string;
     ariaLabel: string;
     ariaLabelledby: string;
     protected _canOpen(): boolean;
@@ -128,7 +127,7 @@ export abstract class _MatSelectBase<C> extends _MatSelectMixinBase implements A
     abstract customTrigger: {};
     protected readonly _destroy: Subject<void>;
     get disableOptionCentering(): boolean;
-    set disableOptionCentering(value: boolean);
+    set disableOptionCentering(value: BooleanInput);
     get empty(): boolean;
     errorStateMatcher: ErrorStateMatcher;
     focus(options?: FocusOptions): void;
@@ -143,21 +142,7 @@ export abstract class _MatSelectBase<C> extends _MatSelectMixinBase implements A
     _isRtl(): boolean;
     _keyManager: ActiveDescendantKeyManager<MatOption>;
     get multiple(): boolean;
-    set multiple(value: boolean);
-    // (undocumented)
-    static ngAcceptInputType_disabled: BooleanInput;
-    // (undocumented)
-    static ngAcceptInputType_disableOptionCentering: BooleanInput;
-    // (undocumented)
-    static ngAcceptInputType_disableRipple: BooleanInput;
-    // (undocumented)
-    static ngAcceptInputType_multiple: BooleanInput;
-    // (undocumented)
-    static ngAcceptInputType_required: BooleanInput;
-    // (undocumented)
-    static ngAcceptInputType_tabIndex: NumberInput;
-    // (undocumented)
-    static ngAcceptInputType_typeaheadDebounceInterval: NumberInput;
+    set multiple(value: BooleanInput);
     // (undocumented)
     ngAfterContentInit(): void;
     // (undocumented)
@@ -202,7 +187,7 @@ export abstract class _MatSelectBase<C> extends _MatSelectMixinBase implements A
     registerOnChange(fn: (value: any) => void): void;
     registerOnTouched(fn: () => {}): void;
     get required(): boolean;
-    set required(value: boolean);
+    set required(value: BooleanInput);
     protected abstract _scrollOptionIntoView(index: number): void;
     _scrollStrategy: ScrollStrategy;
     get selected(): MatOption | MatOption[];
@@ -216,7 +201,8 @@ export abstract class _MatSelectBase<C> extends _MatSelectMixinBase implements A
     trigger: ElementRef;
     get triggerValue(): string;
     get typeaheadDebounceInterval(): number;
-    set typeaheadDebounceInterval(value: number);
+    set typeaheadDebounceInterval(value: NumberInput);
+    userAriaDescribedBy: string;
     get value(): any;
     set value(newValue: any);
     readonly valueChange: EventEmitter<any>;
@@ -225,7 +211,7 @@ export abstract class _MatSelectBase<C> extends _MatSelectMixinBase implements A
     protected _viewportRuler: ViewportRuler;
     writeValue(value: any): void;
     // (undocumented)
-    static ɵdir: i0.ɵɵDirectiveDeclaration<_MatSelectBase<any>, never, never, { "panelClass": "panelClass"; "placeholder": "placeholder"; "required": "required"; "multiple": "multiple"; "disableOptionCentering": "disableOptionCentering"; "compareWith": "compareWith"; "value": "value"; "ariaLabel": "aria-label"; "ariaLabelledby": "aria-labelledby"; "errorStateMatcher": "errorStateMatcher"; "typeaheadDebounceInterval": "typeaheadDebounceInterval"; "sortComparator": "sortComparator"; "id": "id"; }, { "openedChange": "openedChange"; "_openedStream": "opened"; "_closedStream": "closed"; "selectionChange": "selectionChange"; "valueChange": "valueChange"; }, never>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<_MatSelectBase<any>, never, never, { "userAriaDescribedBy": "aria-describedby"; "panelClass": "panelClass"; "placeholder": "placeholder"; "required": "required"; "multiple": "multiple"; "disableOptionCentering": "disableOptionCentering"; "compareWith": "compareWith"; "value": "value"; "ariaLabel": "aria-label"; "ariaLabelledby": "aria-labelledby"; "errorStateMatcher": "errorStateMatcher"; "typeaheadDebounceInterval": "typeaheadDebounceInterval"; "sortComparator": "sortComparator"; "id": "id"; }, { "openedChange": "openedChange"; "_openedStream": "opened"; "_closedStream": "closed"; "selectionChange": "selectionChange"; "valueChange": "valueChange"; }, never, never, false>;
     // (undocumented)
     static ɵfac: i0.ɵɵFactoryDeclaration<_MatSelectBase<any>, [null, null, null, null, null, { optional: true; }, { optional: true; }, { optional: true; }, { optional: true; }, { optional: true; self: true; }, { attribute: "tabindex"; }, null, null, { optional: true; }]>;
 }
@@ -259,7 +245,7 @@ export class MatSelectModule {
 // @public
 export class MatSelectTrigger {
     // (undocumented)
-    static ɵdir: i0.ɵɵDirectiveDeclaration<MatSelectTrigger, "mat-select-trigger", never, {}, {}, never>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<MatSelectTrigger, "mat-select-trigger", never, {}, {}, never, never, false>;
     // (undocumented)
     static ɵfac: i0.ɵɵFactoryDeclaration<MatSelectTrigger, never>;
 }

@@ -49,19 +49,14 @@ export const MAT_SNACK_BAR_DEFAULT_OPTIONS: InjectionToken<MatSnackBarConfig<any
 export function MAT_SNACK_BAR_DEFAULT_OPTIONS_FACTORY(): MatSnackBarConfig;
 
 // @public
-export class MatSnackBar implements OnDestroy {
-    constructor(_overlay: Overlay, _live: LiveAnnouncer, _injector: Injector, _breakpointObserver: BreakpointObserver, _parentSnackBar: MatSnackBar, _defaultConfig: MatSnackBarConfig);
-    dismiss(): void;
+export class MatSnackBar extends _MatSnackBarBase {
+    constructor(overlay: Overlay, live: LiveAnnouncer, injector: Injector, breakpointObserver: BreakpointObserver, parentSnackBar: MatSnackBar, defaultConfig: MatSnackBarConfig);
+    // (undocumented)
     protected handsetCssClass: string;
     // (undocumented)
-    ngOnDestroy(): void;
-    open(message: string, action?: string, config?: MatSnackBarConfig): MatSnackBarRef<TextOnlySnackBar>;
-    get _openedSnackBarRef(): MatSnackBarRef<any> | null;
-    set _openedSnackBarRef(value: MatSnackBarRef<any> | null);
-    openFromComponent<T>(component: ComponentType<T>, config?: MatSnackBarConfig): MatSnackBarRef<T>;
-    openFromTemplate(template: TemplateRef<any>, config?: MatSnackBarConfig): MatSnackBarRef<EmbeddedViewRef<any>>;
-    protected simpleSnackBarComponent: Type<TextOnlySnackBar>;
-    protected snackBarContainerComponent: Type<_SnackBarContainer>;
+    protected simpleSnackBarComponent: typeof SimpleSnackBar;
+    // (undocumented)
+    protected snackBarContainerComponent: typeof MatSnackBarContainer;
     // (undocumented)
     static ɵfac: i0.ɵɵFactoryDeclaration<MatSnackBar, [null, null, null, null, { optional: true; skipSelf: true; }, null]>;
     // (undocumented)
@@ -72,6 +67,26 @@ export class MatSnackBar implements OnDestroy {
 export const matSnackBarAnimations: {
     readonly snackBarState: AnimationTriggerMetadata;
 };
+
+// @public (undocumented)
+export abstract class _MatSnackBarBase implements OnDestroy {
+    constructor(_overlay: Overlay, _live: LiveAnnouncer, _injector: Injector, _breakpointObserver: BreakpointObserver, _parentSnackBar: _MatSnackBarBase, _defaultConfig: MatSnackBarConfig);
+    dismiss(): void;
+    protected abstract handsetCssClass: string;
+    // (undocumented)
+    ngOnDestroy(): void;
+    open(message: string, action?: string, config?: MatSnackBarConfig): MatSnackBarRef<TextOnlySnackBar>;
+    get _openedSnackBarRef(): MatSnackBarRef<any> | null;
+    set _openedSnackBarRef(value: MatSnackBarRef<any> | null);
+    openFromComponent<T, D = any>(component: ComponentType<T>, config?: MatSnackBarConfig<D>): MatSnackBarRef<T>;
+    openFromTemplate(template: TemplateRef<any>, config?: MatSnackBarConfig): MatSnackBarRef<EmbeddedViewRef<any>>;
+    protected abstract simpleSnackBarComponent: Type<TextOnlySnackBar>;
+    protected abstract snackBarContainerComponent: Type<_SnackBarContainer>;
+    // (undocumented)
+    static ɵfac: i0.ɵɵFactoryDeclaration<_MatSnackBarBase, [null, null, null, null, { optional: true; skipSelf: true; }, null]>;
+    // (undocumented)
+    static ɵprov: i0.ɵɵInjectableDeclaration<_MatSnackBarBase>;
+}
 
 // @public
 export class MatSnackBarConfig<D = any> {
@@ -107,7 +122,7 @@ export class MatSnackBarContainer extends BasePortalOutlet implements OnDestroy,
     _role?: 'status' | 'alert';
     snackBarConfig: MatSnackBarConfig;
     // (undocumented)
-    static ɵcmp: i0.ɵɵComponentDeclaration<MatSnackBarContainer, "snack-bar-container", never, {}, {}, never, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<MatSnackBarContainer, "snack-bar-container", never, {}, {}, never, never, false>;
     // (undocumented)
     static ɵfac: i0.ɵɵFactoryDeclaration<MatSnackBarContainer, never>;
 }
@@ -161,7 +176,7 @@ export class SimpleSnackBar implements TextOnlySnackBar {
     // (undocumented)
     snackBarRef: MatSnackBarRef<SimpleSnackBar>;
     // (undocumented)
-    static ɵcmp: i0.ɵɵComponentDeclaration<SimpleSnackBar, "simple-snack-bar", never, {}, {}, never, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<SimpleSnackBar, "simple-snack-bar", never, {}, {}, never, never, false>;
     // (undocumented)
     static ɵfac: i0.ɵɵFactoryDeclaration<SimpleSnackBar, never>;
 }

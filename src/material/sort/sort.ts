@@ -28,13 +28,16 @@ import {
   getSortInvalidDirectionError,
 } from './sort-errors';
 
+/** Position of the arrow that displays when sorted. */
+export type SortHeaderArrowPosition = 'before' | 'after';
+
 /** Interface for a directive that holds sorting state consumed by `MatSortHeader`. */
 export interface MatSortable {
   /** The id of the column being sorted. */
   id: string;
 
   /** Starting sort direction. */
-  start: 'asc' | 'desc';
+  start: SortDirection;
 
   /** Whether to disable clearing the sorting state. */
   disableClear: boolean;
@@ -53,6 +56,8 @@ export interface Sort {
 export interface MatSortDefaultOptions {
   /** Whether to disable clearing the sorting state. */
   disableClear?: boolean;
+  /** Position of the arrow that displays when sorted. */
+  arrowPosition?: SortHeaderArrowPosition;
 }
 
 /** Injection token to be used to override the default options for `mat-sort`. */
@@ -88,7 +93,7 @@ export class MatSort
    * The direction to set when an MatSortable is initially sorted.
    * May be overriden by the MatSortable's sort start.
    */
-  @Input('matSortStart') start: 'asc' | 'desc' = 'asc';
+  @Input('matSortStart') start: SortDirection = 'asc';
 
   /** The sort direction of the currently active MatSortable. */
   @Input('matSortDirection')
@@ -116,7 +121,7 @@ export class MatSort
   get disableClear(): boolean {
     return this._disableClear;
   }
-  set disableClear(v: boolean) {
+  set disableClear(v: BooleanInput) {
     this._disableClear = coerceBooleanProperty(v);
   }
   private _disableClear: boolean;
@@ -200,13 +205,10 @@ export class MatSort
   ngOnDestroy() {
     this._stateChanges.complete();
   }
-
-  static ngAcceptInputType_disableClear: BooleanInput;
-  static ngAcceptInputType_disabled: BooleanInput;
 }
 
 /** Returns the sort direction cycle to use given the provided parameters of order and clear. */
-function getSortDirectionCycle(start: 'asc' | 'desc', disableClear: boolean): SortDirection[] {
+function getSortDirectionCycle(start: SortDirection, disableClear: boolean): SortDirection[] {
   let sortOrder: SortDirection[] = ['asc', 'desc'];
   if (start == 'desc') {
     sortOrder.reverse();

@@ -51,6 +51,10 @@ export const DEV_APP_ROUTES: Routes = [
       ),
   },
   {
+    path: 'cdk-dialog',
+    loadChildren: () => import('./cdk-dialog/dialog-demo-module').then(m => m.DialogDemoModule),
+  },
+  {
     path: 'cdk-experimental-listbox',
     loadChildren: () =>
       import('./cdk-experimental-listbox/cdk-listbox-demo-module').then(
@@ -58,9 +62,8 @@ export const DEV_APP_ROUTES: Routes = [
       ),
   },
   {
-    path: 'cdk-experimental-menu',
-    loadChildren: () =>
-      import('./cdk-experimental-menu/cdk-menu-demo-module').then(m => m.CdkMenuDemoModule),
+    path: 'cdk-menu',
+    loadChildren: () => import('./cdk-menu/cdk-menu-demo-module').then(m => m.CdkMenuDemoModule),
   },
   {
     path: 'checkbox',
@@ -223,11 +226,6 @@ export const DEV_APP_ROUTES: Routes = [
     path: 'mdc-select',
     loadChildren: () =>
       import('./mdc-select/mdc-select-demo-module').then(m => m.MdcSelectDemoModule),
-  },
-  {
-    path: 'mdc-sidenav',
-    loadChildren: () =>
-      import('./mdc-sidenav/mdc-sidenav-demo-module').then(m => m.MdcSidenavDemoModule),
   },
   {
     path: 'mdc-snack-bar',

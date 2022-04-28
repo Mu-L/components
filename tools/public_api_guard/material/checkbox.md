@@ -27,7 +27,6 @@ import * as i4 from '@angular/cdk/observers';
 import { InjectionToken } from '@angular/core';
 import { MatRipple } from '@angular/material/core';
 import { NgZone } from '@angular/core';
-import { NumberInput } from '@angular/cdk/coercion';
 import { OnDestroy } from '@angular/core';
 import { Provider } from '@angular/core';
 import { ThemePalette } from '@angular/material/core';
@@ -54,32 +53,22 @@ export class MatCheckbox extends _MatCheckboxBase implements ControlValueAccesso
     ariaLabelledby: string | null;
     readonly change: EventEmitter<MatCheckboxChange>;
     get checked(): boolean;
-    set checked(value: boolean);
-    get disabled(): any;
-    set disabled(value: any);
+    set checked(value: BooleanInput);
+    get disabled(): boolean;
+    set disabled(value: BooleanInput);
     focus(origin?: FocusOrigin, options?: FocusOptions): void;
     // (undocumented)
     _getAriaChecked(): 'true' | 'false' | 'mixed';
     id: string;
     get indeterminate(): boolean;
-    set indeterminate(value: boolean);
+    set indeterminate(value: BooleanInput);
     readonly indeterminateChange: EventEmitter<boolean>;
     _inputElement: ElementRef<HTMLInputElement>;
     get inputId(): string;
     // (undocumented)
-    _isRippleDisabled(): any;
+    _isRippleDisabled(): boolean;
     labelPosition: 'before' | 'after';
     name: string | null;
-    // (undocumented)
-    static ngAcceptInputType_disabled: BooleanInput;
-    // (undocumented)
-    static ngAcceptInputType_disableRipple: BooleanInput;
-    // (undocumented)
-    static ngAcceptInputType_indeterminate: BooleanInput;
-    // (undocumented)
-    static ngAcceptInputType_required: BooleanInput;
-    // (undocumented)
-    static ngAcceptInputType_tabIndex: NumberInput;
     // (undocumented)
     ngAfterViewChecked(): void;
     // (undocumented)
@@ -96,7 +85,7 @@ export class MatCheckbox extends _MatCheckboxBase implements ControlValueAccesso
     // (undocumented)
     registerOnTouched(fn: any): void;
     get required(): boolean;
-    set required(value: boolean);
+    set required(value: BooleanInput);
     ripple: MatRipple;
     // (undocumented)
     setDisabledState(isDisabled: boolean): void;
@@ -105,7 +94,7 @@ export class MatCheckbox extends _MatCheckboxBase implements ControlValueAccesso
     // (undocumented)
     writeValue(value: any): void;
     // (undocumented)
-    static ɵcmp: i0.ɵɵComponentDeclaration<MatCheckbox, "mat-checkbox", ["matCheckbox"], { "disableRipple": "disableRipple"; "color": "color"; "tabIndex": "tabIndex"; "ariaLabel": "aria-label"; "ariaLabelledby": "aria-labelledby"; "ariaDescribedby": "aria-describedby"; "id": "id"; "required": "required"; "labelPosition": "labelPosition"; "name": "name"; "value": "value"; "checked": "checked"; "disabled": "disabled"; "indeterminate": "indeterminate"; }, { "change": "change"; "indeterminateChange": "indeterminateChange"; }, never, ["*"]>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<MatCheckbox, "mat-checkbox", ["matCheckbox"], { "disableRipple": "disableRipple"; "color": "color"; "tabIndex": "tabIndex"; "ariaLabel": "aria-label"; "ariaLabelledby": "aria-labelledby"; "ariaDescribedby": "aria-describedby"; "id": "id"; "required": "required"; "labelPosition": "labelPosition"; "name": "name"; "value": "value"; "checked": "checked"; "disabled": "disabled"; "indeterminate": "indeterminate"; }, { "change": "change"; "indeterminateChange": "indeterminateChange"; }, never, ["*"], false>;
     // (undocumented)
     static ɵfac: i0.ɵɵFactoryDeclaration<MatCheckbox, [null, null, null, null, { attribute: "tabindex"; }, { optional: true; }, { optional: true; }]>;
 }
@@ -138,7 +127,7 @@ export class MatCheckboxModule {
 // @public
 export class MatCheckboxRequiredValidator extends CheckboxRequiredValidator {
     // (undocumented)
-    static ɵdir: i0.ɵɵDirectiveDeclaration<MatCheckboxRequiredValidator, "mat-checkbox[required][formControlName],             mat-checkbox[required][formControl], mat-checkbox[required][ngModel]", never, {}, {}, never>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<MatCheckboxRequiredValidator, "mat-checkbox[required][formControlName],             mat-checkbox[required][formControl], mat-checkbox[required][ngModel]", never, {}, {}, never, never, false>;
     // (undocumented)
     static ɵfac: i0.ɵɵFactoryDeclaration<MatCheckboxRequiredValidator, never>;
 }

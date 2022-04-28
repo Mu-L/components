@@ -18,7 +18,7 @@ import { QueryList } from '@angular/core';
 // @public
 export class MatGridAvatarCssMatStyler {
     // (undocumented)
-    static ɵdir: i0.ɵɵDirectiveDeclaration<MatGridAvatarCssMatStyler, "[mat-grid-avatar], [matGridAvatar]", never, {}, {}, never>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<MatGridAvatarCssMatStyler, "[mat-grid-avatar], [matGridAvatar]", never, {}, {}, never, never, false>;
     // (undocumented)
     static ɵfac: i0.ɵɵFactoryDeclaration<MatGridAvatarCssMatStyler, never>;
 }
@@ -27,11 +27,9 @@ export class MatGridAvatarCssMatStyler {
 export class MatGridList implements MatGridListBase, OnInit, AfterContentChecked, TileStyleTarget {
     constructor(_element: ElementRef<HTMLElement>, _dir: Directionality);
     get cols(): number;
-    set cols(value: number);
+    set cols(value: NumberInput);
     get gutterSize(): string;
     set gutterSize(value: string);
-    // (undocumented)
-    static ngAcceptInputType_cols: NumberInput;
     ngAfterContentChecked(): void;
     // (undocumented)
     ngOnInit(): void;
@@ -40,7 +38,7 @@ export class MatGridList implements MatGridListBase, OnInit, AfterContentChecked
     _setListStyle(style: [string, string | null] | null): void;
     _tiles: QueryList<MatGridTile>;
     // (undocumented)
-    static ɵcmp: i0.ɵɵComponentDeclaration<MatGridList, "mat-grid-list", ["matGridList"], { "cols": "cols"; "gutterSize": "gutterSize"; "rowHeight": "rowHeight"; }, {}, ["_tiles"], ["*"]>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<MatGridList, "mat-grid-list", ["matGridList"], { "cols": "cols"; "gutterSize": "gutterSize"; "rowHeight": "rowHeight"; }, {}, ["_tiles"], ["*"], false>;
     // (undocumented)
     static ɵfac: i0.ɵɵFactoryDeclaration<MatGridList, [null, { optional: true; }]>;
 }
@@ -59,22 +57,18 @@ export class MatGridListModule {
 export class MatGridTile {
     constructor(_element: ElementRef<HTMLElement>, _gridList?: MatGridListBase | undefined);
     get colspan(): number;
-    set colspan(value: number);
+    set colspan(value: NumberInput);
     // (undocumented)
     _colspan: number;
     // (undocumented)
     _gridList?: MatGridListBase | undefined;
-    // (undocumented)
-    static ngAcceptInputType_colspan: NumberInput;
-    // (undocumented)
-    static ngAcceptInputType_rowspan: NumberInput;
     get rowspan(): number;
-    set rowspan(value: number);
+    set rowspan(value: NumberInput);
     // (undocumented)
     _rowspan: number;
     _setStyle(property: string, value: any): void;
     // (undocumented)
-    static ɵcmp: i0.ɵɵComponentDeclaration<MatGridTile, "mat-grid-tile", ["matGridTile"], { "rowspan": "rowspan"; "colspan": "colspan"; }, {}, never, ["*"]>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<MatGridTile, "mat-grid-tile", ["matGridTile"], { "rowspan": "rowspan"; "colspan": "colspan"; }, {}, never, ["*"], false>;
     // (undocumented)
     static ɵfac: i0.ɵɵFactoryDeclaration<MatGridTile, [null, { optional: true; }]>;
 }
@@ -82,7 +76,7 @@ export class MatGridTile {
 // @public
 export class MatGridTileFooterCssMatStyler {
     // (undocumented)
-    static ɵdir: i0.ɵɵDirectiveDeclaration<MatGridTileFooterCssMatStyler, "mat-grid-tile-footer", never, {}, {}, never>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<MatGridTileFooterCssMatStyler, "mat-grid-tile-footer", never, {}, {}, never, never, false>;
     // (undocumented)
     static ɵfac: i0.ɵɵFactoryDeclaration<MatGridTileFooterCssMatStyler, never>;
 }
@@ -90,7 +84,7 @@ export class MatGridTileFooterCssMatStyler {
 // @public
 export class MatGridTileHeaderCssMatStyler {
     // (undocumented)
-    static ɵdir: i0.ɵɵDirectiveDeclaration<MatGridTileHeaderCssMatStyler, "mat-grid-tile-header", never, {}, {}, never>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<MatGridTileHeaderCssMatStyler, "mat-grid-tile-header", never, {}, {}, never, never, false>;
     // (undocumented)
     static ɵfac: i0.ɵɵFactoryDeclaration<MatGridTileHeaderCssMatStyler, never>;
 }
@@ -103,7 +97,7 @@ export class MatGridTileText implements AfterContentInit {
     // (undocumented)
     ngAfterContentInit(): void;
     // (undocumented)
-    static ɵcmp: i0.ɵɵComponentDeclaration<MatGridTileText, "mat-grid-tile-header, mat-grid-tile-footer", never, {}, {}, ["_lines"], ["[mat-grid-avatar], [matGridAvatar]", "[mat-line], [matLine]", "*"]>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<MatGridTileText, "mat-grid-tile-header, mat-grid-tile-footer", never, {}, {}, ["_lines"], ["[mat-grid-avatar], [matGridAvatar]", "[mat-line], [matLine]", "*"], false>;
     // (undocumented)
     static ɵfac: i0.ɵɵFactoryDeclaration<MatGridTileText, never>;
 }
